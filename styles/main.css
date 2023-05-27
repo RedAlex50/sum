@@ -37,6 +37,14 @@ body {
     color: black;
     text-transform: uppercase;
     font-weight: 500;
+    padding-right: 10px;
+}
+
+.header_links a:hover{
+    color: rgb(0, 67, 122);
+    transition: 100ms;
+    padding-left: 10px;
+    padding-right: 0px;
 }
 
 
@@ -77,6 +85,10 @@ body {
     border: 1px solid rgb(235, 235, 0);
     padding: 20px;
     border-radius: 20px;
+}
+
+.menu_item_comp {
+    display: flex;
 }
 
 .menu_add_item {
@@ -147,4 +159,9 @@ td, th {
 .todo {
     font-size: 14px;
     color: gray;
+}
+
+
+#menu_form {
+    display: none;
 }
