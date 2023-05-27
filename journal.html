@@ -1,20 +1,51 @@
 <div class="main">
+    <!-- journal.html -->
     <div class="main_context">
         <div class="context_header">
             Журнал заказов
         </div>
 
-        <button>
-            Создать новый заказ
-        </button>
-        [TODO: кнопка отсылает на форму создания заказа (order.html)]
+        <div class="button_d">
+            <button class="btn_1">
+                Создать новый заказ
+            </button>
+        </div>
+        <div class="todo">[TODO: кнопка отсылает на форму создания заказа (order.html)]</div>
 
         <div class="journal_list">
             <div class="list_header">
                 Текущие заказы:
             </div>
             <div class="list">
-                [TODO: список закаов, детали заказа, взаимодействие с заказом]
+                <table>
+                    <thead>
+                        <th>id</th>
+                        <th>дата</th>
+                        <th>состав</th>
+                        <th><i class="fa fa-plus" aria-hidden="true"></i></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>27.05.2023</td>
+                            <td>бутер с икрой</td>
+                            <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>27.05.2023</td>
+                            <td>котлекти с пюрешкой</td>
+                            <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>26.05.2023</td>
+                            <td>индийский чай</td>
+                            <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
             </div>
         </div>
     </div>

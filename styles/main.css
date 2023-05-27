@@ -1,11 +1,5 @@
-@font-face {
-    font-family: "RobotoSlab";
-    src: url("/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
-}
-
-
 body {
-    font-family: "RobotoSlab", sans-serif;
+    font-family: monospace;
     font-size: 24px;
     margin: 0;
     padding: 0;
@@ -48,7 +42,19 @@ body {
 
 .main {
     margin: 100px auto;
-    width: 80%;
+}
+
+.main_context {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.context_header {
+    font-size: 48px;
+    margin: 20px auto;
+    width: fit-content;
+    height: fit-content;
+    text-transform: uppercase;
 }
 
 .footer {
@@ -57,4 +63,70 @@ body {
     color: black;
     font-size: xx-large;
     padding: 20px;
+}
+
+.context_form {
+    border: 1px solid rgb(235, 235, 0);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.button_d {
+    text-align: center;
+}
+
+select {
+    font-size: 20px;
+}
+
+.picker_context {
+    padding: 10px;
+}
+
+.form_ready {
+    margin: 20px 0;
+}
+
+.btn_1 {
+    font-size: 24px;
+    color: black;
+    background: rgb(255, 230, 0);
+    border: 0;
+    box-shadow: inset 0px 0px 12px -5px rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.btn_1:hover {
+    background: rgb(255, 250, 0);
+    transition: 100ms;
+}
+
+.btn_1:active {
+    box-shadow: inset 0px 0px 12px -5px rgb(230, 207, 0);
+    transition: 0s;
+}
+
+.btn_2 {
+    margin: 10px 0;
+    color: black;
+    font-size: 20px;
+    border: 0;
+    background: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.todo {
+    font-size: 14px;
+    color: gray;
 }

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Restaurant</title>
 </head>
 <body>
@@ -49,26 +50,46 @@
         <div class="main">
             <div class="main_context">
                 <div class="context_header">
-                    Выбор заказа
+                    Меню доступных блюд
                 </div>
+        
+                <button>
+                    Добавить блюдо в меню
+                </button>
+                [TODO: форма открывается только при нажатии кнопки "добавить блюдо в меню"]
                 <div class="context_form">
                     <form action="">
-                        <div class="form_menu_picker">
-                            Выберите блюдо из меню:
-                            [TODO: выбор блюда из списка доступных блюд]
+                        <div class="menu_add_item">
+                            Название блюда, которое вы хотите добавить:
                         </div>
+                        
+                        <div class="menu_item_comp">
+                            Состав блюда:
+                            [TODO: выбор состава блюда из доступных продуктов]
+                        </div>
+                        
                         <div class="form_ready">
-                            Готовы сделать заказ?
-                            <input type="checkbox" name="order_ready" id="order_ready">
-                            <label for="order_ready">Да, все верно</label>
+                            Подтверить состав
+                            <input type="checkbox" name="item_ready" id="item_ready">
+                            <label for="item_ready">Да, все верно</label>
                         </div>
-                        <div class="btn_finish_order">
+        
+                        <div class="btn_finish_item">
                             <button>
-                                Собрать заказ
+                                Добавить в меню
                             </button>
                             [TODO: актив на кноку]
                         </div>
                     </form>
+                </div>
+        
+                <div class="product_list">
+                    <div class="list_header">
+                        Текущее меню:
+                    </div>
+                    <div class="list">
+                        [TODO: список меню, детали блюда (состав)]
+                    </div>
                 </div>
             </div>
         </div>
