@@ -54,11 +54,19 @@
                         <div class="form_menu_picker">
                             <div class="picker_heading">Выберите блюдо из меню:</div>
                             <div class="picker_context">
-                                <select name="item_picker" id="item_picker" multiple size="3">
-                                    <option value="item1">бутер с икрой</option>
-                                    <option value="item2">котлетки с пюрешкой</option>
-                                    <option value="item3">индийский чай</option>
-                                    <option value="item4">кофе нескафе</option>
+                                <select name="item_picker" id="item_picker" multiple size="5">
+                                    <optgroup label="Меню первых блюд:">
+                                        <option value="item_4">борщик</option>
+                                        <option value="item_5">суп-лапша</option>
+                                    </optgroup>
+                                    <optgroup label="Меню вторых блюд:">
+                                        <option value="item_2">котлекти с пюрешкой</option>
+                                        <option value="item_6">плов</option>
+                                    </optgroup>
+                                    <optgroup label="Меню завтраков:">
+                                        <option value="item_1">бутер с икрой</option>
+                                        <option value="item_3">индийский чай</option>
+                                    </optgroup>
                                 </select>
                             </div>
                             <div class="todo">[TODO: кнопка добавляет блюдо в заказ]</div>
@@ -69,10 +77,8 @@
                             <label for="order_ready">Да, все верно</label>
                         </div>
                         <div class="button_d">
-                            <a href="journal.html">
-                                <button class="btn_1">
-                                    Собрать заказ
-                                </button>
+                            <a href="journal.html" id="btn_make_order">
+                                <span class="btn_1" onclick="">Собрать заказ</span>
                             </a>
                         </div>
                     </form>

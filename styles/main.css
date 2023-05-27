@@ -70,7 +70,9 @@ body {
 }
 
 .list_header {
-    margin: 10px;
+    margin: 10px auto;
+    margin-top: 30px;
+    width: fit-content;
 }
 
 .footer {
@@ -116,6 +118,10 @@ select {
     margin: 20px 0;
 }
 
+#btn_make_order {
+    text-decoration: none;
+}
+
 .btn_1 {
     font-size: 24px;
     color: black;
@@ -154,6 +160,14 @@ table {
 td, th {
     padding: 5px;
     border: 1px solid black;
+}
+
+th {
+    background: rgb(255, 255, 255);
+}
+
+tr:nth-child(odd) {
+    background: rgb(233, 233, 233);
 }
 
 .todo {
