@@ -4,19 +4,32 @@
             Меню доступных блюд
         </div>
 
+        <button>
+            Добавить блюдо в меню
+        </button>
+        [TODO: форма открывается только при нажатии кнопки "добавить блюдо в меню"]
         <div class="context_form">
             <form action="">
                 <div class="menu_add_item">
                     Название блюда, которое вы хотите добавить:
                 </div>
+                
                 <div class="menu_item_comp">
                     Состав блюда:
                     [TODO: выбор состава блюда из доступных продуктов]
                 </div>
+                
                 <div class="form_ready">
                     Подтверить состав
-                    [TODO: чекбокс с подтверждением]
-                    [TODO: кнопка "добавить в меню"]
+                    <input type="checkbox" name="item_ready" id="item_ready">
+                    <label for="item_ready">Да, все верно</label>
+                </div>
+
+                <div class="btn_finish_item">
+                    <button>
+                        Добавить в меню
+                    </button>
+                    [TODO: актив на кноку]
                 </div>
             </form>
         </div>

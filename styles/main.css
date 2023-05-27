@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "RobotoSlab";
+    src: url("/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+}
+
+
+body {
+    font-family: "RobotoSlab", sans-serif;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: rgb(255, 230, 0);
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: inset 0px -25px 30px -10px rgb(230, 207, 0);
+    color: black;
+    padding: 2rem;
+    display: flex;
+}
+
+.header_heading {
+    margin: auto auto;
+    height: fit-content;
+    width: 800px;
+}
+
+.heading_name {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.header_links {
+    border-left: 2px solid black;
+    padding-left: 10px;
+}
+
+.header_links a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+.main {
+    margin: 100px auto;
+    width: 80%;
+}
+
+.footer {
+    background: rgb(255, 230, 0);
+    box-shadow: inset 0px 25px 30px -10px rgb(230, 207, 0);
+    color: black;
+    font-size: xx-large;
+    padding: 20px;
+}
