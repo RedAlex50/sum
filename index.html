@@ -48,24 +48,42 @@
         -->
         
         <div class="main">
+            <!-- menu.html  -->
             <div class="main_context">
                 <div class="context_header">
                     Меню доступных блюд
                 </div>
         
-                <button>
-                    Добавить блюдо в меню
-                </button>
-                [TODO: форма открывается только при нажатии кнопки "добавить блюдо в меню"]
+                <div class="button_d">
+                    <button class="btn_1">
+                        Добавить блюдо в меню
+                    </button>
+                </div>
+                <div class="todo">[TODO: форма открывается только при нажатии кнопки "добавить блюдо в меню"]</div>
+                
                 <div class="context_form">
                     <form action="">
                         <div class="menu_add_item">
-                            Название блюда, которое вы хотите добавить:
+                            <div>Название блюда, которое вы хотите добавить:</div>
+                            <div class="add_item_input"><input type="text" name="menu_item" id=""></div>
                         </div>
                         
                         <div class="menu_item_comp">
-                            Состав блюда:
-                            [TODO: выбор состава блюда из доступных продуктов]
+                            <div class="picker_heading">Выберите продукты:</div>
+                            <div class="picker_context">
+                                <select name="comp_picker" id="comp_picker">
+                                    <option value="comp1">картошка</option>
+                                    <option value="comp2">говядина</option>
+                                    <option value="comp3">макароны</option>
+                                    <option value="comp4">сыр</option>
+                                    <option value="comp5">хлеб</option>
+                                    <option value="comp6">икра</option>
+                                </select>
+                            </div>
+                            <div class="picker_more">
+                                <button class="btn_2"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="todo">[TODO: кнопка добавляет продукт в состав]</div>  
                         </div>
                         
                         <div class="form_ready">
@@ -74,11 +92,14 @@
                             <label for="item_ready">Да, все верно</label>
                         </div>
         
-                        <div class="btn_finish_item">
-                            <button>
+                        <div class="button_d">
+                            <button class="btn_1">
                                 Добавить в меню
                             </button>
-                            [TODO: актив на кноку]
+                            <button class="btn_1">
+                                Закрыть форму
+                            </button>
+                            <div class="todo">[TODO: актив на кнопки]</div>
                         </div>
                     </form>
                 </div>
@@ -88,8 +109,43 @@
                         Текущее меню:
                     </div>
                     <div class="list">
-                        [TODO: список меню, детали блюда (состав)]
+                        <table>
+                            <thead>
+                                <th>id</th>
+                                <th>название</th>
+                                <th>состав</th>
+                                <th><i class="fa fa-plus" aria-hidden="true"></i></th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>бутер с икрой</td>
+                                    <td>хлеб, икра</td>
+                                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>котлекти с пюрешкой</td>
+                                    <td>говядина, картошка</td>
+                                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>индийский чай</td>
+                                    <td>чайный лист</td>
+                                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>борщик</td>
+                                    <td>говядина, свекла, картошка, лук, чеснок, зелень</td>
+                                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
                     </div>
+                    <div class="todo">[TODO: список меню, детали блюда (состав)]</div>
                 </div>
             </div>
         </div>
