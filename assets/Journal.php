@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="image/x-icon" href="assets/logo.png" rel="icon">
     <title>Столовая</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     Очень удобная столовая
                 </div>
                 <div class="heading_logo">
-                    <img src="" alt="">
+                    <img src="assets/logo.png" alt="logo" height="120px" style="margin-left: 50px">
                 </div>
             </div>
             
@@ -78,9 +79,9 @@
                             <?php 
                             echo '<table>
                                     <thead>
-                                        <th>id</th>
-                                        <th>дата</th>
-                                        <th>название</th>
+                                        <th style="width: 50px">id</th>
+                                        <th style="width: 150px">дата</th>
+                                        <th style="width: 250px">название</th>
                                         <th><a href="index.php"><i class="fa fa-plus" aria-hidden="true"></i></a></th>
                                     </thead>
                                     <tbody>';

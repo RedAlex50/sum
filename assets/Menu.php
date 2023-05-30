@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="image/x-icon" href="assets/logo.png" rel="icon">
     <title>Столовая</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     Очень удобная столовая
                 </div>
                 <div class="heading_logo">
-                    <img src="" alt="">
+                    <img src="assets/logo.png" alt="logo" height="120px" style="margin-left: 50px">
                 </div>
             </div>
             
@@ -115,8 +116,8 @@
                                     </div>
                                     <table>
                                         <thead>
-                                            <th>id</th>
-                                            <th>список</th>
+                                            <th style="width: 50px">id</th>
+                                            <th style="width: 300px">список</th>
                                             <th><input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/></th>
                                         </thead>';
                                     echo '<tbody>';

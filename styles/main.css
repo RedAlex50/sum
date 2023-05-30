@@ -20,6 +20,7 @@ body {
     margin: auto auto;
     height: fit-content;
     width: 800px;
+    display: flex;
 }
 
 .heading_name {
@@ -161,6 +162,7 @@ table {
 td, th {
     padding: 5px;
     border: 1px solid black;
+    text-align: center;
 }
 
 th {

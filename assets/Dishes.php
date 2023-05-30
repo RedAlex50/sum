@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="image/x-icon" href="assets/logo.png" rel="icon">
     <title>Столовая</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     Очень удобная столовая
                 </div>
                 <div class="heading_logo">
-                    <img src="" alt="">
+                    <img src="assets/logo.png" alt="logo" height="120px" style="margin-left: 50px">
                 </div>
             </div>
             
@@ -74,7 +75,7 @@
                         <div class="menu_item_comp">
                             <div class="picker_heading">Выберите ингридиенты:</div>
                             <div class="picker_context">
-                                <select name="products[]" id="products" multiple>
+                                <select name="products[]" id="products" multiple size="7">
                                     <?php
                                         $stmt = $db->prepare("SELECT id, name FROM products");
                                         $stmt->execute();
@@ -104,9 +105,9 @@
                             <?php 
                                 echo '<table>
                                         <thead>
-                                            <th>id</th>
-                                            <th>название</th>
-                                            <th>состав</th>
+                                            <th style="width: 50px">id</th>
+                                            <th style="width: 150px">название</th>
+                                            <th style="width: 250px">состав</th>
                                             <th colspan=2><i class="fa fa-plus" aria-hidden="true" onclick="openItemsMenu()"></i></th>
                                         </thead>
                                         <tbody>';

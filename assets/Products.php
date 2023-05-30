@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="image/x-icon" href="assets/logo.png" rel="icon">
     <title>Столовая</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     Очень удобная столовая
                 </div>
                 <div class="heading_logo">
-                    <img src="" alt="">
+                    <img src="assets/logo.png" alt="logo" height="120px" style="margin-left: 50px">
                 </div>
             </div>
             
@@ -95,25 +96,23 @@
                             <?php 
                                 echo '<table>
                                         <thead>
-                                            <th>id</th>
-                                            <th>название</th>
-                                            <th>кол-во</th>
+                                            <th style="width: 50px">id</th>
+                                            <th style="width: 250px">название</th>
+                                            <th style="width: 150px">кол-во</th>
                                             <th colspan=2><i class="fa fa-plus" aria-hidden="true" onclick="openProductsMenu()"></i></th>
                                         </thead>
                                         <tbody>';
                                 foreach ($values as $value) {
-                                    echo    '<tr>';
-                                    echo        '<td>'; print($value['id']); echo '</td>';
-                                    echo        '<td>';
+                                    echo '<tr>';
+                                    echo    '<td>'; print($value['id']); echo '</td>';
+                                    echo    '<td>';
                                     if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) echo $value['name'];
-                                    else 
-                                    echo '          <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
-                                                    else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
-                                                </td>';
-                                    echo    '<td>
-                                                <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
-                                                else print(" "); echo 'name="quantity'.$value['id'].'" value="'.$value['quantity'].'">
-                                            </td>';
+                                    else echo '<input name="name'.$value['id'].'" value="'.$value['name'].'">';
+                                    echo '</td>';
+                                    echo '<td>';
+                                    if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) echo $value['quantity'];
+                                    else echo '<input name="quantity'.$value['id'].'" value="'.$value['quantity'].'">';
+                                    echo '</td>';
                                 if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {
                                     echo        '<td> <input name="edit'.$value['id'].'" type="image" src="https://static.thenounproject.com/png/2185844-200.png" width="20" height="20" alt="submit"/> </td>';
                                     echo        '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
