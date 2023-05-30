@@ -1,0 +1,249 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3f6faf;
+    color: #fff;
+    padding: 20px;
+}
+
+.header-items {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+header h1 a, header h1 a:active {
+    text-decoration: none;
+    color: #fff;
+}
+
+h1 {
+    margin: 0;
+    margin-left: 10px;
+}
+
+h2 {
+    margin: 0;
+    margin-top: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav li a:hover, .active {
+    text-decoration: underline;
+}
+
+main {
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: white;
+    height: auto;
+}
+
+table {
+    border-collapse: collapse; 
+    text-align: center;
+}
+
+td, th {
+    padding: 8px;
+    border: 1px solid black; 
+}
+
+th {
+    background: #a6cafa;
+}
+
+.main-content {
+    margin-bottom: 50px;
+}
+
+.top-table {
+    display: flex;
+    flex-direction: row;
+}
+
+.newdates {
+    width: 220px;
+}
+
+#filter-block {
+    margin-left: 20px;
+}
+
+button {
+    background: transparent;
+}
+
+#amount {
+    border:0;
+    color:#f6931f;
+    font-weight:bold;
+}
+
+h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.newdates-item {
+    margin-bottom: 10px;
+}
+
+.newdates-item input, .newdates-item select {
+    padding: 5px;
+    width: 170px
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+header h1 a, header h1 a:active {
+    text-decoration: none;
+    color: #fff;
+}
+
+.multiselect {
+    width: 123px;
+    padding-right: 10px;
+    /* margin-left: 40px; */
+}
+  
+.selectBox {
+    position: relative;
+}
+  
+.selectBox select {
+    width: 100%;
+}
+  
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+  
+#checkboxes1, #checkboxes2 {
+    position: absolute;
+    z-index: 10;
+    display: none;
+    border: 1px #dadada solid;
+    background-color: #fff;
+    padding: 12px;
+    padding-top: 0;
+}
+  
+#checkboxes1 label, #checkboxes2 label {
+    display: block;
+}
+  
+#checkboxes1 label:hover, #checkboxes2 label:hover {
+    background-color: #1e90ff;
+}
+
+.row {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.date {
+    margin-right: 10px;
+}
+
+footer {
+    background-color: #333;
+}
+
+.errors, .messages {
+    margin-right: 20px;
+    margin-left: 20px;
+    display: inline-block;;
+    margin-top: 30px;
+    padding: 8px;
+}
+
+.errors {
+    border: solid 3px rgb(184, 0, 0);
+}
+
+.messages {
+    border: solid 3px rgb(0, 151, 0);
+}
+
+ol {
+    margin: 0;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    main, .header-items {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    header {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .table-mobile {
+        scale: 0.58;
+        margin-left: -140px;
+        margin-right: 0;
+    }
+
+    #filter-block {
+        width: 100px;
+    }
+    
+    .row {
+        flex-direction: column;
+    }
+
+    .multiselect {
+        margin-left: 0;
+    }
+
+    .newdates {
+        width: 200px;
+    }
+}
