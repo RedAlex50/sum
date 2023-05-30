@@ -41,84 +41,73 @@
                 </div>
             </div>
         </div>
-
         <div class="main">
-            <!-- menu.html  -->
-            <div class="main_context">
-                <?php
-                    if (!empty($_COOKIE['messages'])) {
-                        echo '<div class="messages">';
-                        $messages = unserialize($_COOKIE['messages']);
-                        foreach ($messages as $message) {
-                            echo $message . '</br>';
-                        }
-                        echo '</div>';
-                        setcookie('messages', '', time() + 24 * 60 * 60);
+            <!-- products.html -->
+            <?php
+                if (!empty($_COOKIE['messages'])) {
+                    echo '<div class="messages">';
+                    $messages = unserialize($_COOKIE['messages']);
+                    foreach ($messages as $message) {
+                        echo $message . '</br>';
                     }
-                    if (!empty($_COOKIE['errors'])) {
-                        echo '<div class="errors">';
-                        $errors = unserialize($_COOKIE['errors']);
-                        foreach ($errors as $error) {
-                            echo $error . '</br>';
-                        }
-                        echo '</div>';
-                        setcookie('errors', '', time() + 24 * 60 * 60);
+                    echo '</div>';
+                    setcookie('messages', '', time() + 24 * 60 * 60);
+                }
+                if (!empty($_COOKIE['errors'])) {
+                    echo '<div class="errors">';
+                    $errors = unserialize($_COOKIE['errors']);
+                    foreach ($errors as $error) {
+                        echo $error . '</br>';
                     }
-                ?>
-                <div class="context_header">
-                    Меню доступных блюд
-                </div>
+                    echo '</div>';
+                    setcookie('errors', '', time() + 24 * 60 * 60);
+                }
+            ?>
+            <form action="" method="POST">
+                <div class="main_context">
+                    <div class="context_header">
+                        Склад продуктов
+                    </div>
 
-                <div class="button_d">
-                    <button class="btn_1" onclick="openFormMenu()" id="btn_openMenuForm">
-                        Добавить блюдо в меню
+                    <div class="button_d">
+                    <button class="btn_1" onclick="openProductsMenu()" id="btn_openProductsForm">
+                        Добавить продукты на склад
                     </button>
                 </div>
                 <form action="" method="POST">
                     <div class="context_form" id="menu_form">
                         <div class="menu_add_item">
-                            <div>Название меню:</div>
+                            <div>Название продукта:</div>
                             <div class="add_item_input"><input name="name" placeholder="qwerty"></div>
-                        </div>
-                        
-                        <div class="menu_item_comp">
-                            <div class="picker_heading">Выберите блюда:</div>
-                            <div class="picker_context">
-                                <select name="dishes[]" id="dishes" multiple>
-                                    <?php
-                                        $stmt = $db->prepare("SELECT id, name FROM dishes");
-                                        $stmt->execute();
-                                        $Dishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach ($Dishes as $dish) {
-                                            printf('<option value="%d">%s</option>', $dish['id'], $dish['name']);
-                                        }
-                                    ?>
-                                </select>
-                            </div>
+                            <div>Кол-во продукта:</div>
+                            <div class="add_item_input"><input name="quantity" placeholder="1234"></div>
                         </div>
                         <div class="button_d">
                             <button class="btn_1">
                                 <input type="submit" name="addnewdate" value="Добавить">
                             </button>
-                            <button class="btn_1"  onclick="closeFormMenu()">
+                            <button class="btn_1"  onclick="closeProductsMenu()">
                                 Закрыть форму
                             </button>
                         </div>
                     </div>
 
+
+
                     <div class="product_list">
+                        <div class="list_header">
+                            Список продуктов на складе:
+                        </div>
                         <div class="list">
-                            <div class="list_header">
-                                Меню первых блюд:
-                            </div>
                             <?php 
                                 echo '<table>
-                                <thead>
-                                    <th>id</th>
-                                    <th>название</th>
-                                    <th>список</th>
-                                    <th colspan=2><i class="fa fa-plus" aria-hidden="true"></i></th>
-                                </thead>';
+                                        <thead>
+                                            <th>id</th>
+                                            <th>название</th>
+                                            <th>кол-во</th>
+                                            <th colspan=2><i class="fa fa-plus" aria-hidden="true"></i></th>
+                                        </thead>
+                                        <tbody>';
                                 foreach ($values as $value) {
                                     echo    '<tr>';
                                     echo        '<td>'; print($value['id']); echo '</td>';
@@ -126,17 +115,10 @@
                                                     <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
                                                     else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
                                                 </td>';
-                                    echo        '<td>';
-                                                    $stmt = $db->prepare("SELECT dish_id FROM menu_dishes WHERE menu_id = ?");
-                                                    $stmt->execute([$value['id']]);
-                                                    $Dishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                                    foreach ($Dishes as $dish) {
-                                                        $stmt = $db->prepare("SELECT name FROM dishes WHERE id = ?");
-                                                        $stmt->execute([$dish['dish_id']]);
-                                                        $name = $stmt->fetchColumn();
-                                                        print($name . '<br>');
-                                                    }
-                                    echo        '</td>';
+                                    echo    '<td>
+                                                <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
+                                                else print(" "); echo 'name="quantity'.$value['id'].'" value="'.$value['quantity'].'">
+                                            </td>';
                                 if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {
                                     echo        '<td> <input name="edit'.$value['id'].'" type="image" src="https://static.thenounproject.com/png/2185844-200.png" width="20" height="20" alt="submit"/> </td>';
                                     echo        '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
@@ -144,15 +126,15 @@
                                     echo        '<td colspan=2> <input name="save'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/84/84138.png" width="20" height="20" alt="submit"/> </td>';
                                 }
                                     echo    '</tr>';
-                                }                        
+                                }
                                 echo '</tbody>
-                            </table>';
+                                </table>';
                             ?>
-                                
+                            
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
 
         <div class="footer">

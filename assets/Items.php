@@ -64,9 +64,13 @@
                         setcookie('errors', '', time() + 24 * 60 * 60);
                     }
                 ?>
-
-                <div class="context_form" id="items_form">
-                    <form action="" method="POST">
+                <div class="button_d">
+                    <button class="btn_1" onclick="openItemsMenu()" id="btn_openMenuForm">
+                        Добавить блюдо
+                    </button>
+                </div>
+                <form action="" method="POST">
+                    <div class="context_form" id="items_form">
                         <div class="menu_add_item">
                             <div>Название блюда, которое вы хотите добавить:</div>
                             <div class="add_item_input"><input name="name" placeholder="qwerty"></div>
@@ -94,55 +98,55 @@
                                 Закрыть форму
                             </button>
                         </div>
-                    </form>
-                </div>
-
-                <div class="context_header">
-                    Список блюд
-                </div>
-                
-                <div class="items_list">
-                    <div class="list">
-                        <?php 
-                            echo '<table>
-                                    <thead>
-                                        <th>id</th>
-                                        <th>название</th>
-                                        <th>состав</th>
-                                        <th colspan=2><i class="fa fa-plus" aria-hidden="true" onclick="openItemsMenu()"></i></th>
-                                    </thead>
-                                    <tbody>';
-                            foreach ($values as $value) {
-                                echo    '<tr>';
-                                echo        '<td>'; print($value['id']); echo '</td>';
-                                echo        '<td>
-                                                <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
-                                                else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
-                                            </td>';
-                                echo        '<td>';
-                                                $stmt = $db->prepare("SELECT product_id FROM dish_products WHERE dish_id = ?");
-                                                $stmt->execute([$value['id']]);
-                                                $Products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                                foreach ($Products as $product) {
-                                                    $stmt = $db->prepare("SELECT name FROM products WHERE id = ?");
-                                                    $stmt->execute([$product['product_id']]);
-                                                    $name = $stmt->fetchColumn();
-                                                    print($name . ', ');
-                                                }
-                                echo        '</td>';
-                            if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {
-                                echo        '<td> <input name="edit'.$value['id'].'" type="image" src="https://static.thenounproject.com/png/2185844-200.png" width="20" height="20" alt="submit"/> </td>';
-                                echo        '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
-                            } else {
-                                echo        '<td colspan=2> <input name="save'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/84/84138.png" width="20" height="20" alt="submit"/> </td>';
-                            }
-                                echo    '</tr>';
-                            }
-                            echo '</tbody>
-                            </table>';
-                        ?>
                     </div>
-                </div>
+
+                    <div class="context_header">
+                        Список блюд
+                    </div>
+                    
+                    <div class="items_list">
+                        <div class="list">
+                            <?php 
+                                echo '<table>
+                                        <thead>
+                                            <th>id</th>
+                                            <th>название</th>
+                                            <th>состав</th>
+                                            <th colspan=2><i class="fa fa-plus" aria-hidden="true" onclick="openItemsMenu()"></i></th>
+                                        </thead>
+                                        <tbody>';
+                                foreach ($values as $value) {
+                                    echo    '<tr>';
+                                    echo        '<td>'; print($value['id']); echo '</td>';
+                                    echo        '<td>
+                                                    <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
+                                                    else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
+                                                </td>';
+                                    echo        '<td>';
+                                                    $stmt = $db->prepare("SELECT product_id FROM dish_products WHERE dish_id = ?");
+                                                    $stmt->execute([$value['id']]);
+                                                    $Products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                                    foreach ($Products as $product) {
+                                                        $stmt = $db->prepare("SELECT name FROM products WHERE id = ?");
+                                                        $stmt->execute([$product['product_id']]);
+                                                        $name = $stmt->fetchColumn();
+                                                        print($name . ', ');
+                                                    }
+                                    echo        '</td>';
+                                if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {
+                                    echo        '<td> <input name="edit'.$value['id'].'" type="image" src="https://static.thenounproject.com/png/2185844-200.png" width="20" height="20" alt="submit"/> </td>';
+                                    echo        '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
+                                } else {
+                                    echo        '<td colspan=2> <input name="save'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/84/84138.png" width="20" height="20" alt="submit"/> </td>';
+                                }
+                                    echo    '</tr>';
+                                }
+                                echo '</tbody>
+                                </table>';
+                            ?>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
