@@ -80,31 +80,30 @@
                 </div>
                 <div class="context_form">
                     <form action="" method="POST">
-                        <?php
-                        echo '<div class="form_menu_picker">
-                            <div class="picker_heading">Выберите блюдо из меню:</div>
-                            <div class="picker_context">
-                                <select name="item_picker" id="item_picker" multiple size="5">';
-                                
-                                foreach ($values as $value) {
-                                    echo '<optgroup label="' . $value['name'] . ':">';
-                                    $stmt = $db->prepare("SELECT dish_id FROM menu_dishes WHERE menu_id = ?");
-                                    $stmt->execute([$value['id']]);
-                                    $Dishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                    foreach ($Dishes as $dish) {
-                                        $stmt = $db->prepare("SELECT name FROM dishes WHERE id = ?");
-                                        $stmt->execute([$dish['dish_id']]);
-                                        $name = $stmt->fetchColumn();
-                                        echo '<option id="'.$dish['dish_id'].'" name="dishes[]" value="'.$dish['dish_id'].'">'.$name.'</option>';
-                                    }
-                                    echo '</optgroup>';
-                                }
-                                echo '</select>
-                            </div>
-                        </div>';
-                        ?>
-                        <div class="newdates-item button_b">
-                            <input type="submit" name="create" value="Создать заказ">
+                        <?php 
+                    echo '<ul>';
+                    foreach ($values as $value) {
+                        echo '<li>Название меню: ' . $value['name'];
+                        $stmt = $db->prepare("SELECT dish_id FROM menu_dishes WHERE menu_id = ?");
+                        $stmt->execute([$value['id']]);
+                        $Dishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        echo '<ul>';
+                        foreach ($Dishes as $dish) {
+                            $stmt = $db->prepare("SELECT name FROM dishes WHERE id = ?");
+                            $stmt->execute([$dish['dish_id']]);
+                            $name = $stmt->fetchColumn();
+                            echo '  <li>
+                                        <input type="checkbox" id="'.$dish['dish_id'].'" name="dishes[]" value='.$dish['dish_id'].'>
+                                        <label for="'.$dish['dish_id'].'">'.$name.'</label>
+                                    </li>';
+                        }
+                        echo '</ul>';
+                        echo '</li>';
+                    }
+                    echo '</ul>';
+                ?>
+                        <div class="newdates-item button_d">
+                            <input class="btn_1" type="submit" name="create" value="Создать заказ">
                         </div>
                     </form>
                 </div>
@@ -112,7 +111,7 @@
                 } else {
                     echo '  <form action="" method="POST">
                                 <div class="newdates-item">
-                                    <input type="submit" name="new" value="Создать новый заказ">
+                                    <input class="btn_1" type="submit" name="new" value="Создать новый заказ">
                                 </div>
                             </form>
                         ';

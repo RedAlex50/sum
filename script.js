@@ -13,3 +13,10 @@ function openItemsMenu() {
 function closeItemsMenu() {
     document.getElementById('items_form').style.display = "none";
 }
+
+function openProductsMenu() {
+    document.getElementById('products_form').style.display = "block";
+}
+function closeProductsMenu() {
+    document.getElementById('products_form').style.display = "none";
+}

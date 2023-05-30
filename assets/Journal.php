@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Restaurant</title>
+    <title>Столовая</title>
 </head>
 <body>
     <div class="main_frame">
@@ -70,14 +70,6 @@
                         Журнал заказов
                     </div>
 
-                    <div class="button_d">
-                        <a href="index.php">
-                            <button class="btn_1">
-                                Создать новый заказ
-                            </button>
-                        </a>
-                    </div>
-
                     <div class="journal_list">
                         <div class="list_header">
                             Текущие заказы:
@@ -89,16 +81,13 @@
                                         <th>id</th>
                                         <th>дата</th>
                                         <th>название</th>
-                                        <th colspan=2><i class="fa fa-plus" aria-hidden="true"></i></th>
+                                        <th><a href="index.php"><i class="fa fa-plus" aria-hidden="true"></i></a></th>
                                     </thead>
                                     <tbody>';
                                     foreach ($values as $value) {
                                         echo    '<tr>';
                                         echo        '<td>'; print($value['id']); echo '</td>';
-                                        echo        '<td>
-                                                        <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
-                                                        else print(" "); echo 'type="date" name="order_date'.$value['id'].'" value="'.$value['order_date'].'">
-                                                    </td>';
+                                        echo        '<td>'.$value['order_date'].'</td>';
                                         echo        '<td>';
                                                         $stmt = $db->prepare("SELECT dish_id FROM journal_dishes WHERE journal_id = ?");
                                                         $stmt->execute([$value['id']]);
@@ -109,13 +98,8 @@
                                                             $name = $stmt->fetchColumn();
                                                             print($name . '<br>');
                                                         }
-                                        echo        '</td>';
-                                    if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {
-                                        echo        '<td> <input name="edit'.$value['id'].'" type="image" src="https://static.thenounproject.com/png/2185844-200.png" width="20" height="20" alt="submit"/> </td>';
-                                        echo        '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
-                                    } else {
-                                        echo        '<td colspan=2> <input name="save'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/84/84138.png" width="20" height="20" alt="submit"/> </td>';
-                                    }
+                                        echo '</td>';
+                                        echo '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
                                         echo    '</tr>';
                                     }
                                     echo '</tbody>

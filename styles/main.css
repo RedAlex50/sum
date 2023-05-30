@@ -132,6 +132,7 @@ select {
     padding: 7px;
     padding-left: 15px;
     padding-right: 15px;
+    text-decoration: none;
 }
 
 .btn_1:hover {
@@ -178,4 +179,17 @@ tr:nth-child(odd) {
 
 #menu_form {
     display: none;
+}
+
+#items_form {
+    display: none;
+}
+
+#products_form {
+    display: none;
+}
+
+.fa {
+    cursor: pointer;
+    color: black;
 }

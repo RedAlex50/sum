@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Restaurant</title>
+    <title>Столовая</title>
 </head>
 <body>
     <div class="main_frame">
@@ -64,11 +64,6 @@
                         setcookie('errors', '', time() + 24 * 60 * 60);
                     }
                 ?>
-                <div class="button_d">
-                    <button class="btn_1" onclick="openItemsMenu()" id="btn_openMenuForm">
-                        Добавить блюдо
-                    </button>
-                </div>
                 <form action="" method="POST">
                     <div class="context_form" id="items_form">
                         <div class="menu_add_item">
@@ -79,14 +74,14 @@
                         <div class="menu_item_comp">
                             <div class="picker_heading">Выберите ингридиенты:</div>
                             <div class="picker_context">
-                                <select name="comp_picker" id="comp_picker" multiple size="4">
-                                    <?php 
-                                    $stmt = $db->prepare("SELECT id, name FROM products");
-                                    $stmt->execute();
-                                    $Products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                    foreach ($Products as $product) {
-                                        printf('<option value="%d">%s</option>', $product['id'], $product['name']);
-                                    }
+                                <select name="products[]" id="products" multiple>
+                                    <?php
+                                        $stmt = $db->prepare("SELECT id, name FROM products");
+                                        $stmt->execute();
+                                        $Products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                        foreach ($Products as $product) {
+                                            printf('<option value="%d">%s</option>', $product['id'], $product['name']);
+                                        }
                                     ?>
                                 </select>
                             </div>
@@ -118,19 +113,25 @@
                                 foreach ($values as $value) {
                                     echo    '<tr>';
                                     echo        '<td>'; print($value['id']); echo '</td>';
-                                    echo        '<td>
-                                                    <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
-                                                    else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
-                                                </td>';
+                                    echo        '<td>';
+                                    if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])){
+                                        echo $value['name'];
+                                    }
+                                    else {
+                                        echo '<input name="name'.$value['id'].'" value="'.$value['name'].'">';
+                                    }
+                                    echo '</td>';
                                     echo        '<td>';
                                                     $stmt = $db->prepare("SELECT product_id FROM dish_products WHERE dish_id = ?");
                                                     $stmt->execute([$value['id']]);
                                                     $Products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                                    $lastElement = end($Products);
                                                     foreach ($Products as $product) {
                                                         $stmt = $db->prepare("SELECT name FROM products WHERE id = ?");
                                                         $stmt->execute([$product['product_id']]);
                                                         $name = $stmt->fetchColumn();
-                                                        print($name . ', ');
+                                                        if($product == $lastElement) print($name . ' ');
+                                                        else print($name . ', ');
                                                     }
                                     echo        '</td>';
                                 if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Restaurant</title>
+    <title>Столовая</title>
 </head>
 <body>
     <div class="main_frame">
@@ -66,14 +66,15 @@
                     }
                 ?>
                 <div class="context_header">
-                    Меню доступных блюд
+                    Меню
                 </div>
 
                 <div class="button_d">
                     <button class="btn_1" onclick="openFormMenu()" id="btn_openMenuForm">
-                        Добавить блюдо в меню
+                        Создать новое меню
                     </button>
                 </div>
+                
                 <form action="" method="POST">
                     <div class="context_form" id="menu_form">
                         <div class="menu_add_item">
@@ -97,9 +98,7 @@
                             </div>
                         </div>
                         <div class="button_d">
-                            <button class="btn_1">
-                                <input type="submit" name="addnewdate" value="Добавить">
-                            </button>
+                            <input class="btn_1" type="submit" name="addnewdate" value="Добавить">
                             <button class="btn_1"  onclick="closeFormMenu()">
                                 Закрыть форму
                             </button>
@@ -108,45 +107,34 @@
 
                     <div class="product_list">
                         <div class="list">
-                            <div class="list_header">
-                                Меню первых блюд:
-                            </div>
                             <?php 
-                                echo '<table>
-                                <thead>
-                                    <th>id</th>
-                                    <th>название</th>
-                                    <th>список</th>
-                                    <th colspan=2><i class="fa fa-plus" aria-hidden="true"></i></th>
-                                </thead>';
                                 foreach ($values as $value) {
-                                    echo    '<tr>';
-                                    echo        '<td>'; print($value['id']); echo '</td>';
-                                    echo        '<td>
-                                                    <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
-                                                    else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
-                                                </td>';
-                                    echo        '<td>';
-                                                    $stmt = $db->prepare("SELECT dish_id FROM menu_dishes WHERE menu_id = ?");
-                                                    $stmt->execute([$value['id']]);
-                                                    $Dishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                                    foreach ($Dishes as $dish) {
-                                                        $stmt = $db->prepare("SELECT name FROM dishes WHERE id = ?");
-                                                        $stmt->execute([$dish['dish_id']]);
-                                                        $name = $stmt->fetchColumn();
-                                                        print($name . '<br>');
-                                                    }
-                                    echo        '</td>';
-                                if (empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) {
-                                    echo        '<td> <input name="edit'.$value['id'].'" type="image" src="https://static.thenounproject.com/png/2185844-200.png" width="20" height="20" alt="submit"/> </td>';
-                                    echo        '<td> <input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/> </td>';
-                                } else {
-                                    echo        '<td colspan=2> <input name="save'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/84/84138.png" width="20" height="20" alt="submit"/> </td>';
-                                }
-                                    echo    '</tr>';
+                                    echo '
+                                    <div class="list_header">
+                                        '.$value['name'].'
+                                    </div>
+                                    <table>
+                                        <thead>
+                                            <th>id</th>
+                                            <th>список</th>
+                                            <th><input name="clear'.$value['id'].'" type="image" src="https://cdn-icons-png.flaticon.com/512/860/860829.png" width="20" height="20" alt="submit"/></th>
+                                        </thead>';
+                                    echo '<tbody>';
+                                    $stmt = $db->prepare("SELECT dish_id FROM menu_dishes WHERE menu_id = ?");
+                                    $stmt->execute([$value['id']]);
+                                    $Dishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach ($Dishes as $dish) {
+                                        $stmt = $db->prepare("SELECT name FROM dishes WHERE id = ?");
+                                        $stmt->execute([$dish['dish_id']]);
+                                        $name = $stmt->fetchColumn();
+                                        echo '<tr>
+                                            <td>'.$dish['dish_id'].'</td>
+                                            <td colspan=2>'.$name.'</td>
+                                            </tr>';
+                                    }
+                                    echo '</tbody>
+                                    </table>';
                                 }                        
-                                echo '</tbody>
-                            </table>';
                             ?>
                                 
                         </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Restaurant</title>
+    <title>Столовая</title>
 </head>
 <body>
     <div class="main_frame">
@@ -63,29 +63,22 @@
                     setcookie('errors', '', time() + 24 * 60 * 60);
                 }
             ?>
-            <form action="" method="POST">
-                <div class="main_context">
-                    <div class="context_header">
-                        Склад продуктов
-                    </div>
-
-                    <div class="button_d">
-                    <button class="btn_1" onclick="openProductsMenu()" id="btn_openProductsForm">
-                        Добавить продукты на склад
-                    </button>
+            <div class="main_context">
+                <div class="context_header">
+                    Склад продуктов
                 </div>
+
                 <form action="" method="POST">
-                    <div class="context_form" id="menu_form">
+                    <div class="context_form" id="products_form">
                         <div class="menu_add_item">
                             <div>Название продукта:</div>
                             <div class="add_item_input"><input name="name" placeholder="qwerty"></div>
+                            <br>
                             <div>Кол-во продукта:</div>
                             <div class="add_item_input"><input name="quantity" placeholder="1234"></div>
                         </div>
                         <div class="button_d">
-                            <button class="btn_1">
-                                <input type="submit" name="addnewdate" value="Добавить">
-                            </button>
+                            <input class="btn_1" type="submit" name="addnewdate" value="Добавить">
                             <button class="btn_1"  onclick="closeProductsMenu()">
                                 Закрыть форму
                             </button>
@@ -105,14 +98,16 @@
                                             <th>id</th>
                                             <th>название</th>
                                             <th>кол-во</th>
-                                            <th colspan=2><i class="fa fa-plus" aria-hidden="true"></i></th>
+                                            <th colspan=2><i class="fa fa-plus" aria-hidden="true" onclick="openProductsMenu()"></i></th>
                                         </thead>
                                         <tbody>';
                                 foreach ($values as $value) {
                                     echo    '<tr>';
                                     echo        '<td>'; print($value['id']); echo '</td>';
-                                    echo        '<td>
-                                                    <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
+                                    echo        '<td>';
+                                    if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) echo $value['name'];
+                                    else 
+                                    echo '          <input'; if(empty($_COOKIE['edit']) || ($_COOKIE['edit'] != $value['id'])) print(" disabled ");
                                                     else print(" "); echo 'name="name'.$value['id'].'" value="'.$value['name'].'">
                                                 </td>';
                                     echo    '<td>
@@ -133,8 +128,8 @@
                             
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
 
         <div class="footer">
